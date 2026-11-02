@@ -771,7 +771,8 @@ a:focus-visible,
 
 .links > li > a,
 .Business-dropdown > summary,
-.developer-dropdown > summary {
+.developer-dropdown > summary,
+.learn-dropdown > summary {
     display: inline-flex;
     align-items: center;
     gap: 9px;
@@ -781,7 +782,8 @@ a:focus-visible,
 }
 
 .Business-dropdown > summary,
-.developer-dropdown > summary {
+.developer-dropdown > summary,
+.learn-dropdown > summary {
     cursor: pointer;
     list-style: none;
 }
@@ -791,12 +793,14 @@ a:focus-visible,
 }
 
 .Business-dropdown > summary::-webkit-details-marker,
-.developer-dropdown > summary::-webkit-details-marker {
+.developer-dropdown > summary::-webkit-details-marker,
+.learn-dropdown > summary::-webkit-details-marker {
     display: none;
 }
 
 .Business-dropdown > summary::after,
-.developer-dropdown > summary::after {
+.developer-dropdown > summary::after,
+.learn-dropdown > summary::after {
     width: 8px;
     height: 8px;
     border-right: 1.5px solid #7890b1;
@@ -806,12 +810,14 @@ a:focus-visible,
 }
 
 .Business-dropdown[open] > summary::after,
-.developer-dropdown[open] > summary::after {
+.developer-dropdown[open] > summary::after,
+.learn-dropdown[open] > summary::after {
     transform: rotate(225deg) translateY(-2px);
 }
 
 .Business-dropdown,
-.developer-dropdown {
+.developer-dropdown,
+.learn-dropdown {
     position: static;
 }
 
@@ -840,6 +846,119 @@ a:focus-visible,
     border: 1px solid #edf0f4;
     border-radius: 18px;
     box-shadow: 0 8px 24px rgb(19 48 84 / 7%);
+}
+
+.learn-menu {
+    position: absolute;
+    top: 100%;
+    left: max(16px, calc((100% - 680px) / 2));
+    display: none;
+    width: min(680px, calc(100vw - 32px));
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #edf0f4;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgb(19 48 84 / 7%);
+}
+
+.learn-dropdown[open] .learn-menu:has(.learn-glossary[open]) {
+    left: max(16px, calc((100% - 1100px) / 2));
+    width: min(1100px, calc(100vw - 32px));
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.learn-dropdown[open] .learn-menu {
+    display: block;
+}
+
+.learn-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.learn-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    padding: 16px 12px;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.learn-glossary {
+    min-width: 0;
+}
+
+.learn-glossary[open] {
+    grid-column: 1 / -1;
+}
+
+.learn-glossary > summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.learn-glossary > summary::-webkit-details-marker {
+    display: none;
+}
+
+.learn-glossary > summary:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+}
+
+.learn-menu-link:hover {
+    background: #f7faff;
+}
+
+.learn-glossary-content {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 12px;
+    overflow: hidden;
+    border: 1px solid #edf0f4;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.learn-glossary-content iframe {
+    display: block;
+    width: 100%;
+    height: min(72vh, 760px);
+    border: 0;
+    background: #fff;
+}
+
+.learn-menu-link > span:last-child {
+    display: grid;
+    gap: 4px;
+}
+
+.learn-menu-link strong {
+    color: #15345f;
+    font-size: 17px;
+}
+
+.learn-menu-link small {
+    color: #7a8dad;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.learn-menu-icon {
+    display: grid;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(135deg, #0d8eff, #1c72ff);
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .developer-dropdown[open] .developer-menu {
@@ -923,6 +1042,8 @@ a:focus-visible,
 
 .developer-item:focus-visible,
 .developer-dropdown > summary:focus-visible,
+.learn-dropdown > summary:focus-visible,
+.learn-menu-link:focus-visible,
 .developer-connect a:focus-visible {
     outline: 3px solid #ffbf47;
     outline-offset: 4px;
@@ -1070,6 +1191,25 @@ a:focus-visible,
         left: 12px;
         width: min(420px, calc(100vw - 24px));
         padding: 16px;
+    }
+
+    .learn-menu {
+        left: 12px;
+        width: min(520px, calc(100vw - 24px));
+        padding: 14px;
+    }
+
+    .learn-menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learn-dropdown[open] .learn-menu:has(.learn-glossary[open]) {
+        width: min(520px, calc(100vw - 24px));
+        max-height: calc(100vh - 90px);
+    }
+
+    .learn-glossary-content iframe {
+        height: 68vh;
     }
 
     .developer-grid {

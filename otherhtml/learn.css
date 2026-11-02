@@ -419,6 +419,11 @@ img {
 }
 
 @media (max-width: 640px) {
+    .won {
+        padding: 48px 16px;
+        font-size: clamp(2.2rem, 10vw, 3.3rem);
+    }
+
     .signup-controls {
         flex-direction: column;
         align-items: stretch;
@@ -429,8 +434,38 @@ img {
         width: 100%;
     }
 
+    .signup-controls button {
+        min-width: 0;
+        font-size: 1rem;
+    }
+
     .footer-links {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .site-nav {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 16px;
+    }
+
+    .nav-logo,
+    .nav-links,
+    .nav-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-links,
+    .nav-actions {
+        flex-wrap: wrap;
+    }
+
+    .nav-logo img {
+        width: min(178px, 60vw);
     }
 }
 
